@@ -12,7 +12,7 @@ This project demonstrates how to use **Amazon CloudFront** to cache and serve st
 - ✅ Cache behavior with TTL (Time to Live)
 - ✅ Manual Cache Invalidation using the AWS Console
 - ✅ Integration with AWS SSL/TLS, CloudWatch
-- ✅ Use Case: Image delivery with version updates
+- ✅ Use Case: Website delivery with version updates
 
 ---
 
@@ -45,7 +45,7 @@ aws-cloudfront-demo/
 ### 1. Create an S3 Bucket
 - Go to the S3 Console.
 - Create a new bucket with default settings.
-- Upload a static file (`car.jpg`) into the bucket.
+- Upload a static website (`index.html`, CSS, JS) into the bucket.
 
 ### 2. Configure S3 Bucket Policy
 
@@ -74,12 +74,12 @@ To allow public read access, use this policy (replace `your-bucket-name`):
 - Enable compression.
 - Allow HTTP and HTTPS (or enforce HTTPS for production).
 
-### 4. Access the File
+### 4. Access the Website
 
 Once the distribution is deployed, use the generated domain:
 
 ```
-https://your-distribution-id.cloudfront.net/car.jpg
+https://your-distribution-id.cloudfront.net/index.html
 ```
 
 ---
@@ -87,12 +87,12 @@ https://your-distribution-id.cloudfront.net/car.jpg
 ## 🌀 Cache Behavior & Invalidation
 
 - CloudFront caches objects for 24 hours by default.
-- If you update the image (e.g., upload a red car instead of a blue one), the cache won’t update immediately.
+- If you update the HTML file (e.g., update the content or design), the cache won’t update immediately.
 
 ### 🧹 To Invalidate Cache:
 - Navigate to the **Invalidations** tab in the CloudFront console.
 - Create a new invalidation:
-  - To invalidate one file: `/car.jpg`
+  - To invalidate one file: `/index.html`
   - To invalidate all: `/*`
 
 ---
